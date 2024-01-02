@@ -1,80 +1,67 @@
-import "./App.css"
-import Header from "./components/Header"
-import AddForm from "./components/AddForm"
-import Item from "./components/Item"
-import { useState, useEffect } from "react"
+import './App.css';
+import Header from './components/Header';
+import AddForm from './components/AddForm';
+import Item from './components/Item';
+import { useState, useEffect } from 'react';
 
 function App() {
-  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || [])
-  const [title, setTitle] = useState("")
-  const [editId, setEditId] = useState(null)
-  const [theme, setTheme] = useState("light")
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
+  const [title, setTitle] = useState('');
+  const [editId, setEditId] = useState(null);
+  const [theme, setTheme] = useState('light');
 
-  //รูปแบบ1
-  // useEffect(() => {
-  //   console.log("เรียกใช้งาน useEffect ใน App Component")
-  // })
-
-  //รูปแบบ2
-  // useEffect(() => {
-  //   console.log("เรียกใช้งาน useEffect ใน App Component")
-  // }, [])
-
-  //รูปแบบ3
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks))
-  }, [tasks])
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   function deleteTask(id) {
-    const result = tasks.filter((item) => item.id !== id)
-    setTasks(result)
+    const result = tasks.filter(item => item.id !== id);
+    setTasks(result);
   }
   function editTask(id) {
-    setEditId(id)
-    const editTask = tasks.find((item) => item.id === id)
-    setTitle(editTask.title)
+    setEditId(id);
+    const editTask = tasks.find(item => item.id === id);
+    setTitle(editTask.title);
   }
   function saveTask(e) {
-    e.preventDefault()
+    e.preventDefault();
     if (!title) {
-      alert("Please add new task")
+      alert('Please add new task');
     } else if (editId) {
       //อัพเดทข้อมูล
-      const updateTask = tasks.map((item) => {
+      const updateTask = tasks.map(item => {
         //รายการใดมี id ตรงกันให้แก้ไข
         if (item.id === editId) {
-          return { ...item, title: title }
+          return { ...item, title: title };
         }
-        return item
-      })
-      setTasks(updateTask)
-      setEditId(null)
-      setTitle("")
+        return item;
+      });
+      setTasks(updateTask);
+      setEditId(null);
+      setTitle('');
     } else {
-      //เพิ่มรายการใหม่
+      // Add new task เพิ่มรายการใหม่
       const newTask = {
         id: Math.floor(Math.random() * 1000),
         title: title,
-      }
-      setTasks([...tasks, newTask])
-      setTitle("")
+      };
+      setTasks([...tasks, newTask]);
+      setTitle('');
     }
   }
   return (
-    <div className={"App " + theme}>
+    <div className={'App ' + theme}>
       <Header theme={theme} setTheme={setTheme} />
-      <div className="container">
+      <div className='container'>
         <AddForm title={title} setTitle={setTitle} saveTask={saveTask} editId={editId} />
-
         <section>
-          {tasks.map((data) => (
+          {tasks.map(data => (
             <Item key={data.id} data={data} deleteTask={deleteTask} editTask={editTask} />
           ))}
         </section>
       </div>
-      {}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

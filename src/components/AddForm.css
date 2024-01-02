@@ -4,26 +4,31 @@ h2 {
   text-align: center;
   color: #000;
   margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 .form-control {
+  margin-bottom: 1rem;
   display: flex;
   justify-content: center;
 }
 .text-input {
   flex-grow: 1;
-  padding: 5px 5px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  font-size: 18px;
+  padding: 0.25rem 0.25rem;
+  border: 2px solid #313131;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
 }
 .text-input:focus {
   outline: none;
 }
 .submit-btn {
-  background: green;
-  color: #fff;
+  background: rgb(0, 141, 0);
+  border-radius: 0.5rem;
+  color: #e0e0e0;
   font-weight: bold;
   cursor: pointer;
   font-size: 1.2rem;
   border: transparent;
+  padding: 0 1rem 0 1rem;
+  margin-left: 1rem;
 }

@@ -5,17 +5,18 @@
   justify-content: space-between;
   margin-top: 0.5rem;
   padding: 0.25rem 2rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
-  border-radius: 0.35rem;
-  font-size: 1.2rem;
+  /*box-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);*/
+  box-shadow: 0 0 5px 0px rgba(49, 49, 49, 0.45);
+  border-radius: 1rem;
+  font-size: 1.25rem;
 }
 .title {
-  color: #000;
-  font-weight: bold;
+  color: #313131;
+  font-weight: 500;
 }
 .btn {
-  font-size: 1.2rem;
-  margin-left: 0.8rem;
+  font-size: 1.5rem;
+  margin-left: 1rem;
   cursor: pointer;
-  color: #000;
+  color: #313131;
 }
